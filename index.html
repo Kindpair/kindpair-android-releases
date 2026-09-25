@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kindpair for Android — download</title>
+<meta name="description" content="Download the Kindpair Android app as a signed APK.">
+<style>
+  :root {
+    --canvas: #050812;
+    --panel: #101a2c;
+    --border: #1a2438;
+    --mint: #7ef2c2;
+    --mint-dark: #0f766e;
+    --text: #f4f7ff;
+    --muted: #9fb0cc;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 20px;
+    background: radial-gradient(1200px 600px at 50% -10%, #13233f 0%, var(--canvas) 60%);
+    color: var(--text);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  main { width: 100%; max-width: 560px; }
+  .card {
+    background: color-mix(in srgb, var(--panel) 88%, transparent);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px 28px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+  }
+  h1 { margin: 0 0 4px; font-size: 28px; letter-spacing: -.02em; }
+  .updated { margin: 0 0 24px; color: var(--muted); font-size: 14px; }
+  .download {
+    display: block;
+    text-align: center;
+    padding: 16px 20px;
+    border-radius: 14px;
+    background: var(--mint);
+    color: #052018;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .download:hover { filter: brightness(1.06); }
+  .meta { margin: 12px 0 24px; text-align: center; color: var(--muted); font-size: 14px; }
+  h2 { font-size: 15px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 24px 0 8px; }
+  ul { margin: 0; padding-left: 20px; }
+  li + li { margin-top: 6px; }
+  a { color: var(--mint); }
+  code { font-size: 12px; color: var(--text); overflow-wrap: anywhere; }
+  footer { margin-top: 20px; text-align: center; color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <h1>Kindpair for Android</h1>
+    <p class="updated">Version <span id="version">0.1.0</span> · <span id="size">81 MB</span></p>
+
+    <a class="download" id="download"
+       href="https://github.com/mahmudbodurov/kindpair-android-releases/releases/latest">
+      Download APK
+    </a>
+    <p class="meta" id="note">Android 13 or newer</p>
+
+    <h2>Installing</h2>
+    <ul>
+      <li>Tap the button above on the phone you want to install it on.</li>
+      <li>Allow installs from your browser when Android asks, and continue past the Play Protect
+          note — the app is not distributed through Google Play.</li>
+      <li>If Kindpair is already installed from Google Play, uninstall it first. The Play build is
+          signed with a different key, so this download cannot update over it.</li>
+    </ul>
+
+    <h2>Trust</h2>
+    <ul>
+      <li>Every APK is signed with Kindpair's upload key.</li>
+      <li>SHA-256: <code>CF:3F:46:0F:F3:27:AF:BA:E6:FA:CF:12:0C:BD:77:68:E3:E3:9B:65:BC:B2:2A:34:E8:0A:D8:B9:30:1F:7E:13</code></li>
+    </ul>
+
+    <footer>
+      <a href="https://github.com/mahmudbodurov/kindpair-android-releases/releases">All versions and release notes</a>
+    </footer>
+  </div>
+</main>
+<script>
+  (function () {
+    var repo = "mahmudbodurov/kindpair-android-releases";
+    fetch("https://api.github.com/repos/" + repo + "/releases/latest")
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (release) {
+        if (!release) return;
+        var apk = (release.assets || []).filter(function (a) {
+          return /\.apk$/i.test(a.name);
+        })[0];
+        if (!apk) return;
+        document.getElementById("download").href = apk.browser_download_url;
+        document.getElementById("version").textContent = release.tag_name.replace(/^v/, "");
+        document.getElementById("size").textContent =
+          (apk.size / 1024 / 1024).toFixed(1) + " MB";
+      })
+      .catch(function () {});
+  })();
+</script>
+</body>
+</html>
