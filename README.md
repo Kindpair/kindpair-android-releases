@@ -5,9 +5,9 @@ repository carries only the signed release builds.
 
 ## Download
 
-**[Download the latest APK](https://github.com/mahmudbodurov/kindpair-android-releases/releases/latest)**
+**[Download the latest APK](https://github.com/Kindpair/kindpair-android-releases/releases/latest)**
 
-The [releases page](https://github.com/mahmudbodurov/kindpair-android-releases/releases) keeps every
+The [releases page](https://github.com/Kindpair/kindpair-android-releases/releases) keeps every
 older build, its release notes, and the file size.
 
 ## Before you install
@@ -20,4 +20,4 @@ older build, its release notes, and the file size.
 - If you previously installed Kindpair from Google Play, uninstall it first: the Play build is
   signed with a different, Google-held key, so a direct download cannot update over it.
 
-Landing page: <https://mahmudbodurov.github.io/kindpair-android-releases/>
+Landing page: <https://kindpair.github.io/kindpair-android-releases/>
