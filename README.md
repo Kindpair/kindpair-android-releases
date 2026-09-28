@@ -12,7 +12,7 @@ older build, its release notes, and the file size.
 
 ## Before you install
 
-- **Android 13 (API 33) or newer.** Older phones cannot install the app.
+- **Android 8.0 (API 26) or newer**, on a phone whose GPU supports OpenGL ES 3.0. Older phones cannot install the app.
 - Your phone will ask you to allow installs from your browser or file manager the first time, and
   Play Protect may warn because the app does not come from Google Play.
 - Each APK is signed with Kindpair's upload key. SHA-256 fingerprint:
